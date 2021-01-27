@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>텍스트리뷰</title>
+<!--Bootstrap3 CDN-->
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<style>
+  /* 리뷰 헤더부분 패딩 조정 */
+  .page-header{
+    padding:20px 0;
+  }
+  /* 리뷰작성 이벤트 안내문구 */
+  .rvNotice{
+    line-height: 40px;
+    font-size:15px;
+  }
+  /* 링크스타일 지정 */
+  a{
+    text-decoration: none;
+    color:black;
+  }
+  a:hover{
+    color:#ccc;
+  }
+
+  /* 향수이미지 크기 조정 */
+  #img{
+    width:200px;
+    height:200px;
+    border:1px solid black;
+    margin: 0 20px;
+  }
+  /* 선택한 제품사진과 상세문구 정렬 */
+  .prodSelect{
+    display:flex;
+  }
+  /* 선택한 제품명문구 */
+  #prodName {
+    font-size:15px;
+    font-weight: bold;
+  }
+  /* 상품정보 부분 마진 */
+  .prodInfo{
+    margin:30px 0;
+  }
+
+  /* 리뷰제목, 작성자, 내용 문구 폰트 조정 */
+  .form-group{
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  #txtContent{
+    height: 400px;
+    overflow: auto;
+  }
+
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="page-header text-center">
+      <h3><strong>텍스트 리뷰</strong></h3>
+    </div>
+
+    <form action action="#" method="post" id="frm">
+      <div class="row prodInfo">
+        <div class="col-sm-12">
+          <div class="prodSelect">
+            <div id="img">no image</div>
+            <div>
+              <span id="prodName">오리지널 향수</span>&nbsp;
+              <span id="prodPrice">150,000원</span><br>
+              <a href="#" class="btn btn-default" role="button">제품 선택</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+          <div class="form-group">
+            제목<input type="text" class="form-control col-xs-2" id="rvTitle">
+          </div>
+          <br><br>
+          <div class="form-group">
+            작성자 <input type="text" class="form-control" id="rvWriter">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            내용<br>
+            <textarea name="txtContent" id="txtContent" cols="130" rows="10"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 text-left">
+         비밀번호 <input type="password" class="form-control" name="rvPass" />
+        </div>
+        <div class="col-sm-8 text-right">
+          <input type="button" class="btn btn-default" value="완료" id="save" />
+        </div>
+      </div>
+    </form>
+      <div class="row">
+        <br>
+        <div class="col-sm-12 text-left">
+          <a href="textRvList.html" class="btn btn-default" role="button">취소</a>
+          <a href="textRvList.html" class="btn btn-default" role="button">리뷰목록</a>
+        </div>
+      </div>
+    </div><!--container-->
+</body>
+</html>
