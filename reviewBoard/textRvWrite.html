@@ -14,7 +14,6 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
 <style>
   /* 리뷰 헤더부분 패딩 조정 */
   .page-header{
@@ -60,13 +59,10 @@
     font-size: 15px;
     font-weight: bold;
   }
-  
-  #txtContent{
-    height: 400px;
-    overflow: auto;
+  /* 리뷰목록 돌아가기, 취소버튼 아래 마진조정 */
+  .reset{
+    margin-bottom:20px;
   }
-
-
 </style>
 </head>
 <body>
@@ -102,8 +98,8 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group">
-            내용<br>
-            <textarea name="txtContent" id="txtContent" cols="130" rows="10"></textarea>
+            <label for="contents">내용</label>
+            <textarea class="form-control" rows="30" id="contents"></textarea>
           </div>
         </div>
       </div>
@@ -111,12 +107,12 @@
         <div class="col-sm-3 text-left">
          비밀번호 <input type="password" class="form-control" name="rvPass" />
         </div>
-        <div class="col-sm-8 text-right">
+        <div class="col-sm-9 text-right">
           <input type="button" class="btn btn-default" value="완료" id="save" />
         </div>
       </div>
     </form>
-      <div class="row">
+      <div class="row reset">
         <br>
         <div class="col-sm-12 text-left">
           <a href="textRvList.html" class="btn btn-default" role="button">취소</a>

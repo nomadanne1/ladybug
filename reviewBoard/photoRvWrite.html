@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>텍스트리뷰</title>
+  <title>포토리뷰</title>
 <!--Bootstrap3 CDN-->
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -58,8 +58,10 @@
   input[type="file"]{
     margin-bottom: 20px;
   }
-
-  
+  /* 리뷰목록 돌아가기, 취소버튼 아래 마진조정 */
+  .reset{
+    margin-bottom:20px;
+  }
 </style>
 </head>
 <body>
@@ -98,8 +100,8 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group">
-            내용<br>
-            <textarea name="txtContent" id="txtContent" cols="130" rows="10"></textarea>
+            <label for="contents">내용</label>
+            <textarea class="form-control" rows="30" id="contents"></textarea>
           </div>
         <!-- 파일업로드 -->
           <div class="filebox"> 
@@ -115,14 +117,14 @@
         <div class="col-sm-3 text-left">
          비밀번호 <input type="password" class="form-control" name="rvPass" />
         </div>
-        <div class="col-sm-8 text-right">
+        <div class="col-sm-9 text-right">
           <input type="button" class="btn btn-default" value="완료" />
         </div>
       </div>
     </form>
 
     <!-- 리뷰목록 돌아가기, 취소버튼 -->
-      <div class="row">
+      <div class="row reset">
         <br>
         <div class="col-sm-12 text-left">
           <a href="photoRvList.html" class="btn btn-default" role="button">취소</a>
