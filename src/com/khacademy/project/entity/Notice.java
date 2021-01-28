@@ -82,10 +82,5 @@ public class Notice {
 		this.content = content;
 	}
 
-	@Override
-	public String toString() {
-		return "Notice [id=" + id + ", title=" + title + ", writerId=" + writerId + ", regdate=" + regdate + ", hit="
-				+ hit + ", files=" + files + ", content=" + content + "]";
-	}
 
 }
