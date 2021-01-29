@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <!DOCTYPE html>
@@ -50,22 +52,24 @@
         <main class="main">
 
             <!-- 검색 -->
+            <form>
             <table class="search_box">
                 <tr>
                     <td>
-                        <select class="search_select">
+                        <select class="search_select" name="f">
                             <option value="title">제목</option>
-                            <option value="writerId">작성자</option>
+                            <option value="writer_id">작성자</option>
                         </select>
                     </td>
                     <td>
-                        <form action="/action_page.php" method="">
-                            <input type="text" name="search">
+                       <!-- <form action="/action_page.php" method=""> -->
+                            <input type="text" name="q">
                             <button type="submit">검색</button>
-                        </form>
+                       <!-- </form> -->
                     </td>
                 </tr>
             </table><br>
+            </form>
 
             <!-- 목록 -->
             <table class="table">
@@ -160,15 +164,27 @@
                 <span aria-hidden="true">&laquo;</span>
                 <span class="sr-only">Previous</span>
             </a>
+             <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
         </li>
+        
         <li class="page-item"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li>
+      
         <li class="page-item">
             <a class="page-link" href="#" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
                 <span class="sr-only">Next</span>
             </a>
+            
+             <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+            
         </li>
     </ul>
 
