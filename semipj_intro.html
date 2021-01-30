@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JoMelone</title>
+        <style>
+            body {margin: 0px; padding: 0px;}
+            .jb-box { width: 100%; height: 170px; overflow: hidden; margin: 0px auto; position: relative; }
+            video { width: 100%; }
+            header { width: 100%;}
+            nav { position: absolute; top: 70px; width: 70%; margin-left: 10%;}
+            section { width: 100%; height: 1200px; position: relative;}
+            footer { margin-top: 60px; width: 100%; height: 350px; position: relative; background-color: rgb(255, 255, 255);}
+            .jomel {position: absolute; top: 1px; width: 100%; font-size: 25px; text-align: center; font-family: cursive;}
+            header a {text-decoration: none; color:white;}
+            ul.topnav {list-style-type: none; margin: 0; padding: 0; background-color: #333;}
+            ul.topnav li {float: left; list-style: none; }
+            ul.topnav li a {display: block; color: white; text-align: center;padding: 14px 16px;text-decoration: none;}
+            ul.topnav li a:hover:not(.active) {color: wheat;}
+            ul.topnav li.right {float: right; margin-right: 40px;}
+            li.dropdown { display: inline-block; margin-right: 50px;}
+            #hr1 { width: 1450px; height: 2px; background-color: rgb(199, 199, 199); margin-top: 50px;}
+            #hr2 {margin-top: 20px; float: left; width: 0px; height: 250px; background-color: rgb(199, 199, 199);}
+            .foot1 {margin-top: 10px; width: 30%; float: left; margin-left: 5%;}
+            .foot2 {margin-left: 4%; margin-top: 50px; width: 25%; float: left;}
+            .foot3 {margin-left: 4%; margin-top: 45px; width: 30%; float: left;}
+            .dropdown-content {display: none; width: 58%; position: absolute; }
+            .dropdown-content a { color: white; text-decoration: none; text-align: center; display: block;}
+            .dropdown-content a:hover {color: wheat;}
+            .dropdown:hover .dropdown-content {display: block;}
+            .sec1 {width: 100%; height: 500px; position: relative; margin-top: 15px;}
+            .sec2 {width: 100%; height: 500px; position: relative;}
+            #img1 {width: 700px; margin: 50px; margin-bottom: 0px;}
+            #img2 {width: 700px; margin: 50px; margin-top: 0px; float:right}
+            .sec1 > p {float: right; font-size: 20px; margin-right: 550px; margin-top: 100px;}
+            .sec2 > p {margin-left: 180px; margin-top: 100px; font-size: 20px;}
+
+
+            @media screen and (max-width: 600px) {
+            ul.topnav li.right, ul.topnav li.dropdown,
+            ul.topnav li {float: none;}
+            .jb-box {height: 35%;}
+            .dropbtn {float: left;}
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="jb-box">
+            <video muted autoplay loop>
+                <source src="/SemiPj/images/JoMelone.mp4" type="video/mp4">
+                <strong>Your browser does not support the video tag.</strong>
+              </video>
+        <header>
+            <p class="jomel"><a href="semipj_main2.html">JoMelone</a></p>
+        </header>
+        <nav>
+            <ul class="topnav">
+                <li class="dropdown">
+                    <a href="#home" class="dropbtn">브랜드소개</a>
+                    <ul class="dropdown-content">
+                        <li><a href="semipj_intro.html">JoMelone 소개</a></li>
+                        <li><a href="#">Gallay</a></li>
+                        <li><a href="#">JoMelone 소식</a></li>
+                        <li><a href="#">사용자 팁</a></li>
+                      </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#news" class="dropbtn">제품구매</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">향수</a></li>
+                        <li><a href="#">헤어/바디</a></li>
+                        <li><a href="#">페이셜</a></li>
+                        <li><a href="#">이벤트</a></li>
+                        <li><a href="#">향수추천</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#contact" class="dropbtn">고객센터</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">프로모션</a></li>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">Q&A</a></li>
+                        <li><a href="#">FAQ</a></li>
+                      </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#contact" class="dropbtn">사용후기</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">텍스트리뷰</a></li>
+                        <li><a href="#">포토리뷰</a></li>
+                        <li><a href="#">소셜리뷰</a></li>
+                      </ul>
+                </li>
+                <li class="right"><a href="#about">로그인</a></li>
+                <li class="right"><a href="#about">회원가입</a></li>
+              </ul>
+        </nav>
+        </div>
+        <section>
+            <hr id="hr1">
+            <div class="sec1">
+                <img id="img1" src="/SemiPj/images/조말론info1.jpg">
+                <P><br><strong>JoMelone</strong><br><br>
+                    소개란
+                
+                </P>
+            </div>
+            <div class="sec2">
+                <img id="img2" src="/SemiPj/images/조말론info2.jpg">
+                <P><br><br><strong>JoMelone</strong><br><br>
+                    소개란
+                
+                </P>
+            </div>
+        </section>
+        <footer>
+            <hr id="hr1">
+            <div class="foot1">
+                <strong>Jo Melone</strong><br><br>
+                <small><small>COPYRIGHT © Jo Melone ALL RIGHTS RESERVED.<br>
+                TEL02-1544-9970 FAX070-8220-7977 평일 오전 9:00 ~ 오후 6:00<br>
+                점심 오후 12:00 ~ 오후 1:00<br>
+                토 / 일 / 공휴일 휴무<br><br>
+                COMPANY(주)JoMelone OWNER 정유미<br> 
+                ADDRESS02582 서울특별시 중구 남대문로 120 대일빌딩 2층, 3층<br>
+                MASTER 정유미 E-MAILJoMelonecompany@daum.net<br>
+                BUSINESS LICENSE564-88-00313<br>
+                MALL-ORDER LICENSE2016-서울 중구-0721<br>
+                HOSTING CAFE24DESIGNED By DFLOOR</small></small>
+            </div>
+            <hr id="hr2">
+            <div class="foot2">
+                <strong>ACCOUNT INFO</strong><br><br>
+                <small><small>농 협 301-0195-8069-21<br>
+                우체국 011809-01-017727<br>
+                국 민 033201-04-176511<br>
+                신 한 100-031-867042<br>
+                예금주: (주)JoMelone<br></small></small>
+            </div>
+            <hr id="hr2">
+            <div class="foot3">
+                <strong>RETURN / EXCHANGE</strong><br><br>
+                <small><small><strong>우체국택배 반품주소</strong><br>
+                서울특별시 중구 남대문로 120 대일빌딩 2층, 3층 (02586)<br><br>
+                <strong>타 택배사 이용 시 반품주소</strong><br>
+                서울시 성북구 화랑로 254 4층 (02783)<br>
+
+                자세한 교환·반품절차 안내는 문의란 및 공지사항을 참고해주세요</small></small>
+            </div>
+        </footer>
+    </body>
+</html>
