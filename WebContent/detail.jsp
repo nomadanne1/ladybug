@@ -16,6 +16,7 @@
     <!-- Icon -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
     <style>
         .notice {
             text-align: center;
@@ -57,7 +58,7 @@
             </tbody>
         </table>
         <div class="btn-list">
-            <button type="button" class="btn btn-light" href="#">목록</button>
+            <a class="btn btn-light" href="/ladybug/notice/list">목록</a>
         </div><br>        
         <div class="margin-top">
             <table class="table border-top-default">

@@ -13,7 +13,6 @@ import com.khacademy.project.entity.Notice;
 
 public class NoticeService {
 
-
 	// ---------------------------------------------------------------------getNoticeList
 	public List<Notice> getNoticeList() {
 
@@ -21,9 +20,11 @@ public class NoticeService {
 	}
 
 	public List<Notice> getNoticeList(int page) {
+		// query "" 다 조회
 		return getNoticeList("title", "", page);
 	}
 
+	// 구현!!
 	public List<Notice> getNoticeList(String field/*TITLE, WRITER_ID*/, String query/*A*/, int page) {
 
 		List<Notice> list = new ArrayList<>();
@@ -34,11 +35,15 @@ public class NoticeService {
 				+ " ) "
 				+ " WHERE NUM BETWEEN ? AND ?";
 
+		// ? AND ?
+		// 1, 11, 21, 31 등차수열-> an = a1+(n-1)*10 -> an = 1+(page-1)*10
+		// 10, 20, 30, 40 -> page*10
+
 		String url = "jdbc:oracle:thin:@localhost:1521:XE";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "계정", "비밀번호");
+			Connection con = DriverManager.getConnection(url, "NEWLEC", "newlec");
 			PreparedStatement st = con.prepareStatement(sql);
 			
 			st.setString(1, "%"+query+"%" );
@@ -76,7 +81,52 @@ public class NoticeService {
 		return list;
 	}
 
-	
+	// ---------------------------------------------------------------------getNoticeCount
+	public int getNoticeCount() {
+
+		return getNoticeCount("title", "");
+	}
+
+	// 구현!!
+	public int getNoticeCount(String field, String query) {
+		
+		int count =0;
+
+		// 집계하는 값을 원함 count
+		String sql = "SELECT COUNT(ID) COUNT * FROM ( "
+				+ " SELECT ROWNUM NUM, N.* "
+				+ " FROM (SELECT * FROM NOTICE WHERE "+field+" LIKE ? ORDER BY REGDATE DESC) N " 
+				+ " ) ";
+		
+			String url = "jdbc:oracle:thin:@localhost:1521:XE";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "NEWLEC", "newlec");
+			PreparedStatement st = con.prepareStatement(sql);
+			
+			st.setString(1, "%"+query+"%" );
+
+			ResultSet rs = st.executeQuery();
+
+			count = rs.getInt("count");
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		
+		return count;
+	}
+
 	// ----------------------------------------------------------------------자세한페이지
 	public Notice getNotice(int id) {
 		
@@ -88,7 +138,7 @@ public class NoticeService {
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "계정", "비밀번호");
+			Connection con = DriverManager.getConnection(url, "NEWLEC", "newlec");
 			PreparedStatement st = con.prepareStatement(sql);
 			
 			st.setInt(1, id);
@@ -123,7 +173,6 @@ public class NoticeService {
 		return notice;
 	}
 
-	
 	public Notice getNextNotice(int id) {
 		
 		Notice notice = null;
@@ -178,7 +227,7 @@ public class NoticeService {
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "계정", "비밀번호");
+			Connection con = DriverManager.getConnection(url, "NEWLEC", "newlec");
 			PreparedStatement st = con.prepareStatement(sql);
 			
 			st.setInt(1, id);
@@ -212,5 +261,4 @@ public class NoticeService {
 
 		return notice;
 	}
-
 }
