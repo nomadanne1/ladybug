@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -60,8 +61,9 @@ public class NoticeService {
 				int hit = rs.getInt("HIT");
 				String files = rs.getString("FILES");
 				String content = rs.getString("CONTENT");
+				boolean pub = rs.getBoolean("PUB");
 
-				Notice notice = new Notice(id, title, writerId, regdate, hit, files, content);
+				Notice notice = new Notice(id, title, writerId, regdate, hit, files, content, pub);
 
 				list.add(notice);
 			}
@@ -93,7 +95,7 @@ public class NoticeService {
 		int count =0;
 
 		// 집계하는 값을 원함 count
-		String sql = "SELECT COUNT(ID) COUNT * FROM ( "
+		String sql = "SELECT COUNT(ID) COUNT FROM ( "
 				+ " SELECT ROWNUM NUM, N.* "
 				+ " FROM (SELECT * FROM NOTICE WHERE "+field+" LIKE ? ORDER BY REGDATE DESC) N " 
 				+ " ) ";
@@ -108,8 +110,9 @@ public class NoticeService {
 			st.setString(1, "%"+query+"%" );
 
 			ResultSet rs = st.executeQuery();
-
-			count = rs.getInt("count");
+			if(rs.next()) {
+				count = rs.getInt("count");				
+			}
 			
 			rs.close();
 			st.close();
@@ -154,8 +157,9 @@ public class NoticeService {
 				int hit = rs.getInt("HIT");
 				String files = rs.getString("FILES");
 				String content = rs.getString("CONTENT");
+				boolean pub = rs.getBoolean("PUB");
 
-				notice = new Notice(id, title, writerId, regdate, hit, files, content);
+				notice = new Notice(nid, title, writerId, regdate, hit, files, content, pub);
 			}
 
 			rs.close();
@@ -198,8 +202,9 @@ public class NoticeService {
 				int hit = rs.getInt("HIT");
 				String files = rs.getString("FILES");
 				String content = rs.getString("CONTENT");
+				boolean pub = rs.getBoolean("PUB");
 
-				notice = new Notice(id, title, writerId, regdate, hit, files, content);
+				notice = new Notice(nid, title, writerId, regdate, hit, files, content,pub);
 			}
 
 			rs.close();
@@ -232,7 +237,6 @@ public class NoticeService {
 			
 			st.setInt(1, id);
 
-
 			ResultSet rs = st.executeQuery();
 
 			if (rs.next()) {
@@ -243,8 +247,9 @@ public class NoticeService {
 				int hit = rs.getInt("HIT");
 				String files = rs.getString("FILES");
 				String content = rs.getString("CONTENT");
+				boolean pub = rs.getBoolean("PUB");
 
-				notice = new Notice(id, title, writerId, regdate, hit, files, content);
+				notice = new Notice(nid, title, writerId, regdate, hit, files, content, pub);
 			}
 
 			rs.close();
@@ -260,5 +265,105 @@ public class NoticeService {
 		}
 
 		return notice;
+	}
+	// ------------------------------------------------admin(관리자페이지)
+
+	public int removeNoticeAll(int[] ids) {
+
+		return 0;
+	}
+
+	public int pubNoticeAll(int[] ids) {
+
+		return 0;
+	}
+
+	//공지사항 글쓰기
+	public int insertNotice(Notice notice) {
+
+		int result=0;
+
+		String sql ="INSERT INTO NOTICE(TITLE, CONTENT, WRITER_ID, PUB) VALUES(?,?,?,?)";
+		String url = "jdbc:oracle:thin:@localhost:1521:XE";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "NEWLEC", "newlec");
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, notice.getTitle());
+			st.setString(2, notice.getContent());
+			st.setString(3, notice.getWriterId());
+			st.setBoolean(4,  notice.getPub());
+			
+			result = st.executeUpdate();
+
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	public int deleteNotice(int id) {
+
+		return 0;
+	}
+
+	public int updateNotice(Notice notice) {
+
+		return 0;
+	}
+
+	List<Notice> getNoticeNewestList() {
+
+		return null;
+	}
+
+	// 일괄삭제  
+	public int deleteNoticeAll(int[] ids) {
+		
+		int result=0;
+		
+		String params="";
+		
+		for(int i=0; i<ids.length; i++) {
+			params += ids[i];
+			
+			if(i < ids.length-1) {
+				params += ",";
+			}
+		}
+		
+			// 괄호안에 예- 1,2,3,... 쉼표로 구분해서 들어와야함 
+			//?로는 넣을수 없고 쉼표를 넣은 변수(params)를 만들어 줘야함
+		String sql ="DELETE NOTICE WHERE ID IN ("+params+")";
+		String url = "jdbc:oracle:thin:@localhost:1521:XE";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "NEWLEC", "newlec");
+			Statement st = con.createStatement();
+
+			result = st.executeUpdate(sql);
+
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return result;
 	}
 }

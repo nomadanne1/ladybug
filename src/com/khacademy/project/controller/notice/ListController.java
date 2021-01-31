@@ -1,4 +1,4 @@
-package com.khacademy.project.controller;
+package com.khacademy.project.controller.notice;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,7 +13,7 @@ import com.khacademy.project.entity.Notice;
 import com.khacademy.project.service.NoticeService;
 
 @WebServlet("/notice/list")
-public class NoticeListController extends HttpServlet{
+public class ListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -21,7 +21,7 @@ public class NoticeListController extends HttpServlet{
 		String query_ = request.getParameter("q");
 		String page_ = request.getParameter("p");
 		
-		String field = "title";// 기본값 (전달안됐을경우 null값 빈문자열)
+		String field = "title";// 기본값 (null값 빈문자열- 전달 안됐을경우)
 		if(field_ != null && !field_.equals("")) {
 			field = field_;
 		}
@@ -37,9 +37,12 @@ public class NoticeListController extends HttpServlet{
 		}
 		
 		NoticeService service = new NoticeService();
+		
 		List<Notice> list = service.getNoticeList(field, query, page);
+		int count = service.getNoticeCount(field, query);
 		
 		request.setAttribute("list", list);
+		request.setAttribute("count", count);
 		
 		request.getRequestDispatcher("/WEB-INF/view/notice/list.jsp").forward(request, response);
 

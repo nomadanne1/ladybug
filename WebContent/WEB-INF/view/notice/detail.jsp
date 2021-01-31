@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -38,22 +39,22 @@
             <thead>
                 <tr>
                     <th>제목</th>
-                    <th colspan="3">조멜론 Seoul Award 2년 연속 수상!</th>
+                    <th colspan="3">${n.title }</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th>작성일</th>
-                    <td  colspan="3"> 2011-01-02</td>
+                    <td  colspan="3"><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${n.regdate}" /></td>
                 </tr>
                 <tr>
                     <th> 작성자</th>
-                    <td> 조멜론</td>
+                    <td> ${n.writerId}</td>
                     <th> 조회수</th>
-                    <td> 1000</td>
+                    <td> ${n.hit }</td>
                 </tr>
                 <tr class="content">
-                    <td colspan="4">냉무</td>
+                    <td colspan="4">${n.content }</td>
                 </tr>
             </tbody>
         </table>
