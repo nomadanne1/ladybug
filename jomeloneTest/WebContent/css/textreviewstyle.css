@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+  /* 리뷰 헤더부분 패딩 조정 */
+  .page-header{
+    padding:20px 0;
+  }
+  /* 리뷰작성 이벤트 안내문구 */
+  .rvNotice{
+    line-height: 40px;
+    font-size:15px;
+  }
+  /* 링크스타일 지정 */
+  a{
+    text-decoration: none;
+    color:black;
+  }
+  a:hover{
+    color:#ccc;
+  }
+
+  /* 향수명 폰트 조정 */
+  .perfumeName{
+    font-size:18px;
+    font-weight: bold;
+  }
+
+  /* 향수이미지 크기 조정 */
+  img{
+    width:250px;
+    height:250px;
+  }
+
+  /* 리뷰 작성자별명, 작성일, 조회수 */
+  .rvFilter{
+    margin-bottom:20px; 
+    font-weight:bolder;
+  }
+
+  /* 검색필터 margin-top 조정 */
+  .filterSelect{
+    margin-top:50px;
+  }
+
+  /* 향수이미지 크기 조정 */
+  #img{
+    width:200px;
+    height:200px;
+    border:1px solid black;
+    margin: 0 20px;
+  }
+  /* 선택한 제품사진과 상세문구 정렬 */
+  .prodSelect{
+    display:flex;
+  }
+  /* 선택한 제품명문구 */
+  #prodName {
+    font-size:15px;
+    font-weight: bold;
+  }
+  /* 상품정보 부분 마진 */
+  .prodInfo{
+    margin:30px 0;
+  }
+
+  /* 리뷰제목, 작성자, 내용 문구 폰트 조정 */
+  .review-info{
+    font-size: 15px;
+    font-weight: bold;
+  }
+  /* 리뷰목록 돌아가기, 취소버튼 아래 마진조정 */
+  .reset{
+    margin-bottom:20px;
+  }
